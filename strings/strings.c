@@ -43,7 +43,7 @@ char *reverse_string(char *rv, char *s)
     {
         // the start of rv equals the end of s
         rv[start] = s[end];
-        // deincrement from s[end] to s[start]
+        // deincrement from s[end] to s[start] by -1
         end--;
     }
     // NULL terminator goes at the end when done
