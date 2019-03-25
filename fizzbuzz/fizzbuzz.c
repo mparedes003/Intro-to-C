@@ -10,7 +10,7 @@
 */
 int fizzbuzz(int n)
 {
-    // initialize a counter
+    // initialize a counter thats an integer 0
     int counter = 0;
 
     for (int i = 0; i <= n; i++)
@@ -38,7 +38,7 @@ int fizzbuzz(int n)
         {
             // print i if not divisible by 3 and or 5
             printf("%d\n", i);
-            // increment the counter variable every time i is what gets printed
+            // increment the counter variable by 1 every time i is what gets printed
             counter++;
         }
     }
