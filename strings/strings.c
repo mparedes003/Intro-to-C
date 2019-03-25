@@ -29,6 +29,27 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    // initialize start position
+    int start;
+    // initialize end position
+    int end;
+    // initialize size to the string length of s
+    int size = string_length(s);
+
+    // end equals size - 1
+    end = size - 1;
+
+    for (start = 0; start < size; start++)
+    {
+        // the start of rv equals the end of s
+        rv[start] = s[end];
+        // deincrement from s[end] to s[start]
+        end--;
+    }
+    // NULL terminator goes at the end when done
+    rv[start] = '\0';
+    // return rv
+    return rv;
 }
 
 #ifndef TESTING
