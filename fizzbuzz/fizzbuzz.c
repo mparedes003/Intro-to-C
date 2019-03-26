@@ -8,23 +8,42 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
-int fizzbuzz(int n){
+int fizzbuzz(int n)
+{
+    // initialize a counter thats an integer 0
     int counter = 0;
-    //int i;
 
-    for (int i = 0; i <= n; i++){
-        if (i % 3 == 0 && i % 5 == 0){
+    for (int i = 0; i <= n; i++)
+    {
+        // if i is divisible by 3 and 5
+        if (i % 3 == 0 && i % 5 == 0)
+        {
+            // print FizzBuzz
             printf("FizzBuzz\n");
-        } else if (i % 3 == 0){
+        }
+        // else if i is divisible by
+        else if (i % 3 == 0)
+        {
+            // print Fizz
             printf("Fizz\n");
-        } else if (i % 5 == 0){
+        }
+        // if i is divisible by 5
+        else if (i % 5 == 0)
+        {
+            // print Buzz
             printf("Buzz\n");
-        } else {
+        }
+        // else
+        else
+        {
+            // print i if not divisible by 3 and or 5
             printf("%d\n", i);
+            // increment the counter variable by 1 every time i is what gets printed
             counter++;
         }
-   }
-   return counter;
+    }
+    // return counter
+    return counter;
 }
 
 #ifndef TESTING
