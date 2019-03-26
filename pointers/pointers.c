@@ -39,7 +39,7 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    // initialize char target string to equal NULL
+    // initialize char pointer target to equal NULL
     char *target = NULL;
     // initialize i to equal 0
     int i = 0;
@@ -73,15 +73,15 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-    // initialize the char h string to equal haystack
+    // initialize the char pointer h to equal haystack
     char *h = haystack;
 
     // while the value of h is not equal to the NULL terminator
     while (*h != '\0')
     {
-        // initialize the char h_beginning string to equal h
+        // initialize the char pointer h_beginning to equal h
         char *h_begin = h;
-        // initialize the char n string to equal needle
+        // initialize the char pointer n to equal needle
         char *n = needle;
 
         // while the value of h is not equal to the NULL terminator

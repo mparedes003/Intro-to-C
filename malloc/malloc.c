@@ -16,7 +16,7 @@ char *string_dup(char *src)
 {
     // initialize x that is equal to the string length of the source
     int x = string_length(src);
-    // initialize character dup string to equal the string length of src + 1 using malloc
+    // initialize character pointer dup to equal the string length of src + 1 using malloc
     char *dup = malloc(x + 1);
 
     for (int i = 0; i < x; i++)
