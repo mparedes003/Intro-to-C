@@ -14,35 +14,42 @@
 
 char *string_dup(char *src)
 {
-    int n = string_length(src);
-    char * dup = malloc(n+1);
+    // initialize x that is equal to the string length of the source
+    int x = string_length(src);
+    // initialize character dup string to equal the string length of src + 1 using malloc
+    char *dup = malloc(x + 1);
 
-    for (int i = 0; i < n; i++){
-        *(dup+i) = *(src+i);
+    for (int i = 0; i < x; i++)
+    {
+        // make the value of dup at each index equal the value of src at each index
+        *(dup + i) = *(src + i);
     }
-    *(dup+n) = '\0';
+    // make the value of dup at index x equal to the NULL terminator
+    *(dup + x) = '\0';
 
+    // return dup
     return dup;
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
-    `n` is the number of bytes to copy. You may want to cast the input 
-    pointers to char pointers first before performing the copying. 
-    
-    Do not use the `memcpy` function from the standard library.
+    You may want to cast the input pointers to char pointers first before
+    performing the copying. `n` is the amount of data that should be copied
+    from `src` to `dest`. 
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-    char * chsrc = (char *) src;
-    char * chdest = (char *) dest;
+    char *charsrc = (char *)src;
+    char *chardest = (char *)dest;
 
-    for (int i = 0; i < n; i++){
-        *(chdest+i) = *(chsrc+i);
+    for (int i = 0; i < n; i++)
+    {
+        // make the value of chardest at each index i equal to the value of charsrc at each index i
+        *(chardest + i) = *(charsrc + i);
     }
-
-    // return chdest;
+    // return chardest
+    return chardest;
 }
 
 /*
@@ -58,39 +65,10 @@ void *mem_copy(void *dest, const void *src, int n)
     Do not use the `realloc` function from the standard libary.
 */
 // Still getting this error when using either option
-// [ERROR] (tests/malloc_tests.c:63: errno: None) 
+// [ERROR] (tests/malloc_tests.c:63: errno: None)
 // Your resize_memory function did not truncate the size of the given string correctly.
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-    if (new_size == 0){
-        free(ptr);
-        return NULL;
-    } 
-    //else if (!ptr){
-    //     return malloc(new_size);
-
-    // } else if (old_size == new_size){
-    //     return ptr;
-    // }
-
-    void * new_block = malloc(new_size);
-
-    int bytes_to_copy;
-
-    if (new_size < old_size) {
-        //mem_copy(new_block, ptr, new_size);
-        bytes_to_copy = new_size;
-
-    } else {
-        //mem_copy(new_block, ptr, old_size);
-        bytes_to_copy = old_size;
-
-    }
-    mem_copy(new_block, ptr, bytes_to_copy);
-
-    free(ptr);
-
-    return new_block;
 }
 
 #ifndef TESTING
@@ -104,12 +82,13 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", target[i]);
     }
 
@@ -119,12 +98,13 @@ int main(void)
     char *path = string_dup("/students/");
     int url_length = string_length(url);
     int path_length = string_length(path);
-    
+
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
 
-    while (*path != '\0') {
+    while (*path != '\0')
+    {
         *p = *path;
         p++;
         path++;
