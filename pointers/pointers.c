@@ -71,15 +71,45 @@ char *find_char(char *str, int c)
 
     Do not use the `strstr` function from the standard library.
 */
-// char *find_string(char *haystack, char *needle)
-// {
-// }
+char *find_string(char *haystack, char *needle)
+{
+    // initialize the char h string to equal haystack
+    char *h = haystack;
+
+    // while the value of h is not equal to the NULL terminator
+    while (*h != '\0')
+    {
+        // initialize the char h_beginning string to equal h
+        char *h_begin = h;
+        // initialize the char n string to equal needle
+        char *n = needle;
+
+        // while the value of h is not equal to the NULL terminator
+        while (*h != '\0')
+        {
+            // increment h by 1 (continue going through the haystack)
+            h++;
+            // increment n by 1 (continue collecting the needle)
+            n++;
+        }
+        // if the value of n is equal to the NULL terminator
+        if (*n == '\0')
+        {
+            // return h_begin
+            return h_begin;
+        }
+        // increment h by 1
+        h++;
+    }
+    // return NULL
+    return NULL;
+}
 
 #ifndef TESTING
 int main(void)
 {
     char *hello = "Hello!";
-    // char *world = "World";
+    char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, "Hello!");
@@ -87,10 +117,10 @@ int main(void)
     printf("%s\n", buffer);
 
     char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
