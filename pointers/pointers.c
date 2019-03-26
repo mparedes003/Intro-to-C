@@ -39,6 +39,28 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
+    // initialize char target string to equal NULL
+    char *target = NULL;
+    // initialize i to equal 0
+    int i = 0;
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        // if the value of str at index i equals c
+        if (str[i] == c)
+        {
+            // the target is at the address of str at index i
+            target = &str[i];
+            // stop
+            break;
+        }
+        // if the value of str at index i equals the NULL terminator
+        if (str[i] == '\0')
+            // stop
+            break;
+    }
+    // return target
+    return target;
 }
 
 /*
@@ -46,18 +68,18 @@ char *find_char(char *str, int c)
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
-    
+
     Do not use the `strstr` function from the standard library.
 */
-char *find_string(char *haystack, char *needle)
-{
-}
+// char *find_string(char *haystack, char *needle)
+// {
+// }
 
 #ifndef TESTING
 int main(void)
 {
     char *hello = "Hello!";
-    char *world = "World";
+    // char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, "Hello!");
@@ -65,10 +87,10 @@ int main(void)
     printf("%s\n", buffer);
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
